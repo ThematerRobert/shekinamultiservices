@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shékina Resto</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        body { background-color: #000; color: #fff; overflow-x: hidden; }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
+            align-items: center; padding: 15px 5%; background: rgba(157, 203, 221, 0.7);
+            backdrop-filter: blur(8px); z-index: 1000;
+        }
+        .logo { font-size: 22px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+        .multi-link { color: #b38012; text-decoration: none; border: 1px solid #fff; padding: 8px 15px; font-size: 14px; transition: 0.3s; }
+
+        /* HERO */
+        .hero { position: relative; height: 60vh; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .hero-img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        .hero-content { position: relative; z-index: 3; text-align: center; }
+        .hero-content h1 { font-size: clamp(3rem, 15vw, 6rem); font-weight: bold; text-transform: lowercase; }
+
+        /* MENU SECTION */
+        .menu-section { padding: 60px 5%; background: #fff; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+
+        .food-card { display: flex; flex-direction: column; background: #fff; transition: 0.3s; }
+        .food-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; margin-bottom: 20px; transition: 0.4s; }
+        .food-card:hover img { transform: scale(1.03); }
+        .food-card h2 { font-size: 1.3rem; font-weight: 700; color: #111; text-transform: uppercase; margin-bottom: 12px; }
+        .food-card .desc { font-size: 1rem; color: #444; margin-bottom: 25px; flex-grow: 1; }
+
+        .btn-order {
+            display: block; background: #29f8dc; text-align: center; padding: 16px;
+            text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 0.9rem;
+            text-transform: uppercase; transition: 0.3s;
+        }
+
+        /* SLIDER FLYERS (0.2s Tranzisyon) */
+        .slider-box { background: rgba(225, 255, 255, 0.9); padding: 30px 0; text-align: center; }
+        .slider-box h2 { color: #29f8dc; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
+        .slider-container { width: 98%; max-width: 500px; margin: 0 auto; overflow: hidden; border-radius: 15px; border: 2px solid #050e0c; }
+        .slider { display: flex; width: 400%; animation: fastSlide 10s infinite; }
+        .slide { width: 25%; 
+        height: 600px;
+        }
+        .slide img { width: 100%; display: block; 
+        height: 100%;}
+
+        @keyframes fastSlide {
+            0%, 23% { transform: translateX(0); }
+            25%, 48% { transform: translateX(-25%); }
+            50%, 73% { transform: translateX(-50%); }
+            75%, 98% { transform: translateX(-75%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* 1. Klas sa a konekte flèch la ak animasyon an */
+.flech-pompe {
+    display: inline-block;
+    color: #e3fc06; /* Menm koulè ak bouton an */
+    font-size: 20px;
+    margin-right: 8px; /* Bay yon ti espas ak bouton an */
+    font-weight: bold;
+    animation: ponpe-dwat 0.7s infinite alternate ease-in-out;
+}
+
+/* 2. Animasyon an (Verifye si non an match ak liy anlè a) */
+@keyframes ponpe-dwat {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(10px); /* Flèch la pouse vè bouton an */
+        opacity: 0.3; /* Li vin klè pou l atire je */
+    }
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    /* Men animasyon ti motè a */
+    animation: mote-desann 2s infinite ease-in-out;
+}
+
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+}
+
+/* Animasyon ki fè l monte desann dousman anplas */
+@keyframes mote-desann {
+    0% {
+        transform: translateY(0px); /* Pozisyon nòmal */
+    }
+    50% {
+        transform: translateY(-15px); /* Li monte yon ti kras */
+    }
+    100% {
+        transform: translateY(0px); /* Li tounen nan plas li */
+    }
+}
+
+/* Ti efè lè w pase sourit sou li */
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Shekina</div>
+        <div class="button-side">
+            <span class="flech-pompe">&#10140</span>
+        <a href="multiservicios.html" class="multi-link">Vizite Sh&eacute;kina Multiserces</a>
+    </nav>
+
+    <section class="hero">
+        <img src="chat.jpeg" class="hero-img" alt="Background">
+        <div class="hero-content">
+            <p>Santi bon koute ch&egrave;  !</p>
+        </div>
+    </section>
+       
+    <main class="menu-section">
+        <div class="menu-grid">
+            <div class="food-card">
+                <img src="diri djondjon.jpeg" alt="Diri Djondjon">
+                <h2>DIRI DJONDJON</h2>
+                <p class="desc">Gou natirèl djondjon lakay.</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+            <div class="food-card">
+                <img src="diri ak lalo.jpeg" alt="Diri Lalo">
+                <h2>DIRI AK LALO</h2>
+                <p class="desc">Yon plezi pou moun ki konn gou.</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+            <div class="food-card">
+                <img src="diri ak kalalou.jpeg" alt="">
+                <h2>MAYI AK SÒS PWA</h2>
+                <p class="desc">Byen prepare, byen gou.</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+            <div class="food-card">
+                <img src="mayi ak sos pwason.jpeg" alt="Mayi Pwason">
+                <h2>Mayi ak pwa ak sòs pwason</h2>
+                <p class="desc">Yon konbinazon pafè.</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+            <div class="food-card">
+                <img src="pitimi ak sos vyann.jpeg" alt="Pitimi">
+                <h2>Pitimi a pwa ak s&ograve;s </h2>
+                <p class="desc">Sante ak gou nan yon sèl plat.</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+            <div class="food-card">
+                <img src="diri sos pwa .jpeg" alt="Diri Sòs Pwa">
+                <h2>Diri ak s&ograve;s pwa epi legim</h2>
+                <p class="desc">Klasik ayisyen an nan nivo siperyè.</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+            <div class="food-card">
+                <img src="soup joumou.jpeg" alt="">
+                <h2>Soup Joumou</h2>
+                <p class="desc">Chofe, gou san parèy.</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+            <div class="food-card">
+                <img src="mayi moulen ak sos pwa.jpeg" alt="Griyo">
+                <h2>Mayi moulen, s&ograve;s pwa ak legim</h2>
+                <p class="desc">Griyo byen kroustiyan.</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+            <div class="food-card">
+                <img src="poulet rotie.jpeg" alt="Poulet rotie">
+                <h2>Poulet Rotie</h2>
+                <p class="desc">Poul griye...</p>
+                <a href="https://wa.me/509XXXXXXXX" class="btn-order">Order Now</a>
+            </div>
+
+            <section class="menu-section" style="padding: 40px 5%;">
+    <div class="menu-grid">
+    </main>
+
+    <section class="slider-box">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide"><img src="SL1.jpeg" alt="Pwodwi 10-11"></div>
+                <div class="slide"><img src="SL2.jpeg" alt="Pwodwi 12-13"></div>
+                <div class="slide"><img src="SL3.jpeg" alt="Pwodwi 14-15"></div>
+                <div class="slide"><img src="SL4.jpeg" alt="Pwodwi 16-17"></div>
+            </div>
+        </div>
+        <p style="margin-top: 20px; color: #777;">Sh&eacute;kina Resto-Bar se koupe dw&egrave;t.</p>
+    </section>
+    <section class="menu-section" style="padding: 40px 5%;">
+    <div class="menu-grid">
+
+        <div class="food-card">
+            <img src="salade verte.jpeg" alt="Manje">
+            <h2>salade Verte</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+
+        <div class="food-card">
+            <img src="salade russe.jpeg" alt="Manje">
+            <h2>salade Russe</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+
+        <div class="food-card">
+            <img src="lasanya.jpeg" alt="Manje">
+            <h2>Lazanya</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+
+        <div class="food-card">
+            <img src="hamberger.jpeg" alt="Manje">
+            <h2>Hamberger</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+
+        <div class="food-card">
+            <img src="hotdog.jpeg" alt="Manje">
+            <h2>hotdog</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+
+        <div class="food-card">
+            <img src="empanadas.jpeg" alt="">
+            <h2>empanadas</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+
+        <div class="food-card">
+            <img src="pica pollo.jpeg" alt="Manje">
+            <h2>Pica pollo</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+
+        <div class="food-card">
+            <img src="Griyo.jpeg" alt="Manje">
+            <h2>Griyo</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+ <div class="food-card">
+            <img src="fritay.jpeg" alt="Manje">
+            <h2>fritay pwason</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+
+         <div class="food-card">
+            <img src="JI ANANA.jpeg" alt="JI">
+            <h2>JI ANANA</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+         <div class="food-card">
+            <img src="JI SITRON.jpeg" alt="Manje">
+            <h2>JI SITWON</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+         <div class="food-card">
+            <img src="JI GRENADYA.jpeg" alt="Manje">
+            <h2>JI GRENAYA</h2>
+            <p class="desc">Yon ti deskripsyon kout.</p>
+            <a href="https://wa.me/509XXXXXXXX" class="btn-order">KÒMANDE KOUNYA!</a>
+        </div>
+    </div>
+ </section> 
+ <a href="https://wa.me/56936189637?text=Hola,%20mwen%20ta%20renmen%20fè%20yon%20kòmand!" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+</body>
+</html>
