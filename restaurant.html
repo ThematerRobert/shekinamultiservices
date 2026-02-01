@@ -16,12 +16,51 @@
         }
         .logo { font-size: 12px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: #fd0404; }
         .multi-link { color: #fd0404; text-decoration: none; border: 1px solid #fff; padding: 8px 15px; font-size: 14px; transition: 0.3s; }
+       
+.hero {
+    position: relative;
+    height: 100vh; /* Nou monte wotè a yon ti kras pou flyer yo parèt pi byen */
+    overflow: hidden;
+    background-color: black;
+}
 
-        /* HERO */
-        .hero { position: relative; height: 60vh; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        .hero-img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
-        .hero-content { position: relative; z-index: 3; text-align: center; }
-        .hero-content h1 { font-size: clamp(3rem, 15vw, 6rem); font-weight: bold; text-transform: lowercase; }
+.hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Chanje 'cover' pa 'contain' si w vle wè TOUT flyer a nèt san l pa koupe */
+    background-color: black; /* Mete background nwa si flyer a gen espas sou kote */
+    filter: brightness(60%);
+    opacity: 0;
+    animation: sliderFade 20s infinite;
+}
+
+/* Tanperati pou chak foto (Chak foto parèt pandan 5 segonn) */
+.hero-img:nth-child(1) { animation-delay: 0s; }
+.hero-img:nth-child(2) { animation-delay: 5s; }
+.hero-img:nth-child(3) { animation-delay: 10s; }
+.hero-img:nth-child(4) { animation-delay: 15s; }
+
+@keyframes sliderFade {
+    0% { opacity: 0; visibility: hidden; }
+    2% { opacity: 1; visibility: visible; } /* Parèt vit */
+    23% { opacity: 1; } /* Rete fiks */
+    25% { opacity: 0; visibility: hidden; } /* Disparèt */
+    100% { opacity: 0; }
+}
+
+.hero-content {
+    position: absolute;
+    z-index: 10; /* Toujou anlè tout imaj yo */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8); /* Ajoute lonbraj pou tèks la parèt pi byen */
+}
+
 
         /* MENU SECTION */
         .menu-section { padding: 60px 5%; background: #fff; }
@@ -43,7 +82,7 @@
         .slider-box { background: rgba(225, 255, 255, 0.9); padding: 30px 0; text-align: center; }
         .slider-box h2 { color: #29f8dc; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
         .slider-container { width: 98%; max-width: 500px; margin: 0 auto; overflow: hidden; border-radius: 15px; border: 2px solid #050e0c; }
-        .slider { display: flex; width: 400%; animation: fastSlide 10s infinite; }
+        .slider { display: flex; width: 400%; animation: fastSlide 3s infinite; }
         .slide { width: 25%; 
         height: 600px;
         }
@@ -134,14 +173,16 @@
         <a href="multiservicios.html" class="multi-link"
         style="margin-right: auto; margin: 12px;">L&Ograve;T S&Egrave;VIS!</a>
     </nav>
-
-    <section class="hero">
-        <img src="chat.jpeg" class="hero-img" alt="Background">
-        <div class="hero-content">
-            <p>Santi bon koute ch&egrave;  !</p>
-        </div>
-    </section>
-       
+<section class="hero">
+    <img src="t5.jfif" class="hero-img">
+    <img src="SL4.jpeg" class="hero-img">
+    <img src="t6.jfif" class="hero-img">
+    <img src="SL2.jpeg" class="hero-img">
+    
+    <div class="hero-content">
+        <p>Santi bon koute chè !</p>
+    </div>
+</section>
     <main class="menu-section">
         <div class="menu-grid">
             <div class="food-card">
