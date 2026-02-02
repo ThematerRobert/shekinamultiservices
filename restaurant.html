@@ -21,7 +21,7 @@
     position: relative;
     height: 80vh; /* Nou monte wotè a yon ti kras pou flyer yo parèt pi byen */
     overflow: hidden;
-    background-color: black;
+    background-color: rgb(233, 221, 221);
 }
 
 .hero-img {
@@ -33,7 +33,7 @@
     object-fit: cover; /* Chanje 'cover' pa 'contain' si w vle wè TOUT flyer a nèt san l pa koupe */
     object-fit: contrain;
     transition: opacity 1s ease-in-out;
-    background-color: rgb(7, 7, 7); /* Mete background nwa si flyer a gen espas sou kote */
+    background-color: rgb(248, 245, 245), 245); /* Mete background nwa si flyer a gen espas sou kote */
     filter: brightness(90%);
     opacity: 0;
     animation: sliderFade 12s infinite;
@@ -41,7 +41,9 @@
 @media (min-width:1024px) {
     .hero-img{
         object-fit: contain;
-        background-color: rgba(225, 255, 255, 0.9);
+        max-width: 800px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
