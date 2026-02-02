@@ -19,35 +19,37 @@
         }
 .hero {
     position: relative;
-    height: 60vh; /* Nou monte wotè a yon ti kras pou flyer yo parèt pi byen */
+    height: 78vh; /* Nou monte wotè a yon ti kras pou flyer yo parèt pi byen */
     overflow: hidden;
-    background-color: ;
+    background-color: black;
 }
 
 .hero-img {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 5;
+    left: 5;
     width: 100%;
     height: 100%;
     object-fit: cover; /* Chanje 'cover' pa 'contain' si w vle wè TOUT flyer a nèt san l pa koupe */
+    object-fit: contrain;
+    transition: opacity 1s ease-in-out;
     background-color: rgb(7, 7, 7); /* Mete background nwa si flyer a gen espas sou kote */
     filter: brightness(60%);
     opacity: 0;
-    animation: sliderFade 20s infinite;
+    animation: sliderFade 12s infinite;
 }
 
 /* Tanperati pou chak foto (Chak foto parèt pandan 5 segonn) */
 .hero-img:nth-child(1) { animation-delay: 0s; }
-.hero-img:nth-child(2) { animation-delay: 5s; }
-.hero-img:nth-child(3) { animation-delay: 10s; }
-.hero-img:nth-child(4) { animation-delay: 15s; }
+.hero-img:nth-child(2) { animation-delay: 3s; }
+.hero-img:nth-child(3) { animation-delay: 6s; }
+.hero-img:nth-child(4) { animation-delay: 9s; }
 
 @keyframes sliderFade {
-    0% { opacity: 0; visibility: hidden; }
-    2% { opacity: 1; visibility: visible; } /* Parèt vit */
-    23% { opacity: 1; } /* Rete fiks */
-    25% { opacity: 0; visibility: hidden; } /* Disparèt */
+    0% { opacity: 0; }
+    5% { opacity: 1; }/* Parèt vit */
+    30% { opacity: 1; } /* Rete fiks */
+    40% { opacity: 0; }
     100% { opacity: 0; }
 }
 
